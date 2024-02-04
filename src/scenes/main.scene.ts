@@ -14,9 +14,10 @@ export const mainScene = (): void => {
         onKeyDown,
         scale,
     } = k;
+    loadSprite("merchantconspiracy", "MERCHANTCONSPIRACY.png");
     loadSprite("pirate", "pirate.png");
     loadSprite('background', 'map.jpg');
-     add([
+    const map = add([
         sprite('background'),
         pos(-100, -1000),
         scale(3)
@@ -33,16 +34,24 @@ export const mainScene = (): void => {
 
     // keypresses
     onKeyDown("a", () => {
-        player.move(-120, 0);
+        map.move(200, 0);
     });
     onKeyDown("d", () => {
-        player.move(120, 0);
+        map.move(-200, 0);
     });
     onKeyDown("s", () => {
-        player.move(0, 120);
+        map.move(0, -200);
     });
     onKeyDown("w", () => {
-        player.move(0, -120);
+        map.move(0, 200);
     });
+    onKeyDown("=", () => {
+        const map = add([
+            sprite('merchantconspiracy'),
+            pos(0, 0),
+            scale(0.6)
+        ]);
+    });
+
 
 };
